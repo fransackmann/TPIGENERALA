@@ -1,0 +1,169 @@
+# depslib dependency file v1.0
+1761403916 source:c:\users\user\documents\c++ utn\practica3\tpgrupal\src\funciones.cpp
+
+1761680963 source:c:\users\user\documents\c++ utn\practica3\tpgrupal\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+
+1762104748 c:\users\user\documents\c++ utn\practica3\tpgrupal\include\funciones.h
+
+1761928164 source:c:\users\user\documents\c++ utn\practica3\tpgrupal\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+
+1762613658 source:c:\users\usuario\downloads\tpgrupal-main\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+
+1762612814 c:\users\usuario\downloads\tpgrupal-main\include\funciones.h
+	<iostream>
+
+1762567554 source:c:\users\usuario\downloads\tpgrupal-main\src\funciones.cpp
+
+1762613668 source:c:\users\usuario\downloads\tpgrupal-main\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+
+1762983570 source:c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpgrupal-final-main\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+
+1762982652 c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpgrupal-final-main\include\funciones.h
+	<iostream>
+
+1762979082 source:c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpgrupal-final-main\main.cpp
+	<iostream>
+	"funciones.h"
+	"funciones2.h"
+	<cstdlib>
+	<ctime>
+
+1762911727 source:c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpgrupal-final-main\src\funciones.cpp
+
+1762983960 source:c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpgrupal-final-main\funciones2.cpp
+	<iostream>
+	"funciones.h"
+	"funciones2.h"
+	<cstdlib>
+
+1762979729 c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpgrupal-final-main\include\funciones2.h
+	<iostream>
+
+1762998568 source:c:\users\usuario\downloads\tpgrupal-final-main\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+
+1762998580 c:\users\usuario\downloads\tpgrupal-final-main\include\funciones.h
+	<iostream>
+
+1762998482 source:c:\users\usuario\downloads\tpgrupal-final-main\funciones2.cpp
+	<iostream>
+	"funciones.h"
+	"funciones2.h"
+	<cstdlib>
+
+1762998406 c:\users\usuario\downloads\tpgrupal-final-main\include\funciones2.h
+	<iostream>
+
+1762998586 source:c:\users\usuario\downloads\tpgrupal-final-main\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+
+1762984226 source:c:\users\usuario\downloads\tpgrupal-final-main\src\funciones.cpp
+
+1763052706 source:c:\users\user\desktop\tpgrupal-final-main\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+	"rlutil.h"
+
+1763045257 c:\users\user\desktop\tpgrupal-final-main\include\funciones.h
+	<iostream>
+
+1763007845 source:c:\users\user\desktop\tpgrupal-final-main\src\funciones.cpp
+
+1763010260 c:\users\user\desktop\tpgrupal-final-main\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1763057360 source:c:\users\user\desktop\tpgrupal-final-main\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	"rlutil.h"
+
+1763052706 source:c:\users\user\documents\github\tp-final\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+	"rlutil.h"
+
+1763045257 c:\users\user\documents\github\tp-final\include\funciones.h
+	<iostream>
+
+1763010260 c:\users\user\documents\github\tp-final\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1763076576 source:c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	"rlutil.h"
+
+1763071398 c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\include\funciones.h
+	<iostream>
+
+1763058216 c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1763058216 source:c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+	"rlutil.h"
+
