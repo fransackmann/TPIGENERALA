@@ -137,13 +137,13 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1763076576 source:c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\funciones.cpp
+1763078507 source:c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\funciones.cpp
 	<iostream>
 	"funciones.h"
 	<cstdlib>
 	"rlutil.h"
 
-1763071398 c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\include\funciones.h
+1763079206 c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\include\funciones.h
 	<iostream>
 
 1763058216 c:\users\paco\documents\nueva carpeta\tpgrupal-final-main-main\rlutil.h
