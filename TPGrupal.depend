@@ -167,3 +167,33 @@
 	<ctime>
 	"rlutil.h"
 
+1763091728 source:c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpigenerala-main\funciones.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	"rlutil.h"
+
+1763091728 c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpigenerala-main\include\funciones.h
+	<iostream>
+
+1763079377 c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpigenerala-main\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1763083274 source:c:\users\paco\documents\facultad\programacion i\segunda cursada\tpi del grupo\tpigenerala-main\main.cpp
+	<iostream>
+	"funciones.h"
+	<cstdlib>
+	<ctime>
+	"rlutil.h"
+

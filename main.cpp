@@ -9,11 +9,15 @@ using namespace std;
 int main(){
 
     srand(time(NULL)); ///PARA QUE RAND GENERE NUMEROS ALEATORIOS TODAS LAS PARTIDAS
+
     int opcion;
     int puntajeTotal = 0;
+
     string nombre;
     string maxJugador = "";
+
     int maxPuntaje = 0;
+
     ///MOSTRAR MENU
     do{
         mostrarMenu();

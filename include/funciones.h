@@ -14,8 +14,7 @@ void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &
 
 /// MODO DOS JUGADORES
 void jugarDosJugadores(string &maxJugador, int &maxPuntaje);
-void jugarUnJugador2(int &puntajeTotal, string &nombre, string &maxJugador, int &maxPuntaje);
-void jugarTurno(int &puntajeTotal, string nombre, bool mManual, string &maxJugador, int &maxPuntaje);
+void jugarTurno(int &puntajeTotal, string nombre, string &maxJugador, int &maxPuntaje);
 
 /// MECANICAS DEL JUEGO
 void tirarDados(int dados[], int cantidad, bool mManual);

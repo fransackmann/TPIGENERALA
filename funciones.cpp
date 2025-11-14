@@ -48,6 +48,7 @@ void limpiarPantalla(){
 
 /// FUNCION QUE MISTRA LOS CREDITOS
 void mostrarCreditos(){
+    // couts para mostrar los creditoos
     cout << "************************* CREDITOS ************************" << endl;
     cout << "----------------------------------------------------------" <<endl;
     cout << "PROGRAMACION I - UNIVERSIDAD TECNOLOGICA NACIONAL (FRGP)" << endl;
@@ -60,13 +61,13 @@ void mostrarCreditos(){
     cout << "- FRANCO PACHECHO - LEGAJO: 34045" << endl;
     cout << "- RODRIGO GODOY- LEGAJO: 33198 " << endl;
 
-    limpiarPantalla();
+    limpiarPantalla(); // limpiamos pantalla
 }
 
 
 
 /// FUNCION PRINCIPAL PARA MODO UN JUGADOR
-void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &maxPuntaje){ /// Se pasa las variable por referencia para modificar la variable original y tenerla en el main
+void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &maxPuntaje){ /// Se pasa las variable por referencia para modificar la variable original
 
     cout << "Ingrese su nombre: ";
     cin >> nombre; // LE PEDIMOS EL NOMBRE
@@ -76,40 +77,49 @@ void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &
     int cantDados = 5; // VARIABLE PARA CANT. DE DADOS
     int dados[5]; // VEC CON EL TAMAÑO DE la variable cantDados
 
-    // SE DETERMINA SI SE USA MODO MANUAL
     bool mManual = false; // SE TOMA UN BOOLEANO PARA DETERMINAR SI SE USA EL MODO MANUAL
 
     char modomanual; // char para que el usuario responda con S/N
 
+    // while que sigue hasta que haya s/n ingresado por el usuario
     while (true){
+
         cout << "Desea activar el modo manual? (S/N) :" << endl;
-        cin >> modomanual;
-        if (modomanual == 's' || modomanual == 'S'){
+        cin >> modomanual; // preguntamos al usuario
+
+        if (modomanual == 's' || modomanual == 'S'){ // si es true se activa el modo manual
             cout << "Modo Manual ACTIVADO" << endl;
             mManual = true;
-            break;
-        }else if (modomanual == 'n' || modomanual == 'N'){
+            break; // cierre del ciclo while
+        }
+
+        else if (modomanual == 'n' || modomanual == 'N'){ // si es false no se activa
             cout << "Modo Manual DESACTIVADO" << endl;
-            break;
-        }else cout << "Caracter Invalido: Ingrese (S/N)..." << endl;
-            limpiarPantalla();
-        // SE PIDE S/N SI ES S SE VUELVE TRUE mManual SI ES N NO CAMBIA SI NO ES NINGUNA SE VUELVE AL MENU
-      }
-    limpiarPantalla();
+            break; // cierre del ciclo while
+        }
+
+        else {
+            cout << "Caracter Invalido: Ingrese (S/N)..." << endl; // si no se ingresa S o N, te sigue preguntado
+            limpiarPantalla(); // limpiamos pantalla
+        }
+    }
+
+    limpiarPantalla(); // limpiamos pantalla
 
     bool generalaServida = false; // inicializamos la variable en false
     int rondaJugada = 0; // inicializamos la rindajugada en 0
 
     // FOR PARA LA CANT. DE RONDAS
     for(int ronda = 1; ronda <=10; ronda++){
+
         rondaJugada = ronda;
 
         // INFO VISIBLE PARA EL USUARIO
         cout << "----------------------------------------------------------" <<endl;
         cout << "Turno de: " << nombre << " | Ronda : " << ronda << " | Puntaje total: " << puntajeTotal << " PTS." << endl;
 
-        int numeroLanzamiento = 1; // VARIABLE PARA GUARDAR QUE LANZAMIENTOS ES
-        bool jugadorPlantado = false; // VARIABLE INICIALIZADA EN FALSE
+        int numeroLanzamiento = 1; // VARIABLE PARA GUARDAR EL NUMERO DE LANZAMIENTO
+        bool jugadorPlantado = false; // VARIABLE INICIALIZADA EN FALSE, PARA VER SI SE PLANTA O NO EL JUGADOR
         char respuestaJugador, respuestaJugador2; // VAIRABLES TIPO CHAR PARA QUE RESPONDA EL JUGADOR CON S/N
 
         int puntajeRonda = 0; // INICIALIZAMOS EL CONT. EN CERO
@@ -122,91 +132,113 @@ void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &
                 tirarDados(dados, cantDados, mManual);
                 mostrarDados(dados, cantDados, 1);
 
-            }else {
+            }
+
+            else {
                 cout << "CONTINUAR LANZANDO? (S/N): ";
                 cin >> respuestaJugador; // PREGUNTO SI QUIERE SEGUIR TIRANDO ALGUN DADO
 
-                if (respuestaJugador == 'N' || respuestaJugador == 'n') {
+                if (respuestaJugador == 'N' || respuestaJugador == 'n') { // IF PARA SABER SI NO SE QUISO PLANTAR
                     jugadorPlantado = true; // SI EL JUGADOR SE PLANTA SALIMOS DEL WHILE
 
-                } else if (respuestaJugador == 'S' || respuestaJugador == 's') {
-                    // SI EL JUGADOR QUIERE TIRAR TODOS
-                    cout << "DESEA TIRAR TODOS? (S/N): ";
-                    cin >> respuestaJugador2;
+                } else if (respuestaJugador == 'S' || respuestaJugador == 's') { // IF PARA SABER SI SE QUISO PLANTAR
 
-                    if (respuestaJugador2 == 'S' || respuestaJugador2 == 's') {
-                        //OPCION DE TIRAR TODOS
+                    cout << "DESEA TIRAR TODOS? (S/N): ";
+                    cin >> respuestaJugador2; // LE PREGUNTAMOS SI QUIERE TIRAR TODOS
+
+                    if (respuestaJugador2 == 'S' || respuestaJugador2 == 's') { // SI ES TRUE TIRAMOS TODOS LOS DADOS DE VUELTA
+
                         tirarDados(dados, cantDados, mManual);
                         mostrarDados(dados, cantDados, numeroLanzamiento);
 
-                    } else if (respuestaJugador2 == 'N' || respuestaJugador2 == 'n') {
-                        //OPCION DE TIRAR ALGUNOS
+                    } else if (respuestaJugador2 == 'N' || respuestaJugador2 == 'n') { // SI ES FALSE PREGUNTAMOS LA CANTIDAD
+
                         int cantidadARelanzar;
+
                         cout << "CUANTOS DADOS VOLVES A TIRAR?: ";
                         cin >> cantidadARelanzar; // PIDO CUANTOS QUIERE TIRAR
 
-                        for (int i=0; i < cantidadARelanzar; i++){
+                        for (int i=0; i < cantidadARelanzar; i++){ // FOR PARA PREGUNTAR CUAL DADO?, LA CANT. QUE HAYA PEDIDO
+
                             int posicionDado;
+
                             cout << "CUAL DADO?: ";
                             cin >> posicionDado; // PREGUNTO CUAL DE TODOS
 
                             int indice = posicionDado - 1; // HAGO UN -1, PQ EL VEC VA DE 0 A 4
 
 
-                            if(indice < 0 || indice >= cantDados){
+                            if(indice < 0 || indice >= cantDados){ // if para controlar que sea una posicion valida
                                 cout << "Posicion invalida. Debe ser un dado entre 1 y 5." << endl;
                                 i--;
-                                continue;
+                                continue; // para que vuelva a atras y pregunte
                             }
 
-                            if(mManual){
+                            if(mManual){ // si el modo manual es true sigue esto
 
-                                int valorRelanzar;
+                                int valorRelanzar; // inicializamos variable
+
                                 do {
+
                                     cout << "Seleccionar Valor para dado " << posicionDado << ": ";
-                                    cin >> valorRelanzar;
-                                } while (valorRelanzar < 1 || valorRelanzar > 6);
-                                dados[indice] = valorRelanzar;
-                            } else {
+                                    cin >> valorRelanzar; // preguntamos el num del dado
+
+                                } while (valorRelanzar < 1 || valorRelanzar > 6); // suge mientras sea un num del 1 al 6
+
+                                dados[indice] = valorRelanzar; // guardamos el valor de cada dado en el vec
+
+                            } else { // si es false el mode manual
 
                                 dados[indice] = 1+ (rand()% 6); // SE GENERA UN DADO ALETORIO NUEVO
+
                             }
                         }
+
                         mostrarDados(dados, cantDados, numeroLanzamiento); // MUESTRO LOS NUEVOS DADOS
+
                     }
 
-                } else {
+                }
+                else {
+
                     // Si la respuesta a "CONTINUAR LANZANDO?" no es S ni N
                     cout << "Respuesta invalida. Por favor, ingrese S o N." << endl;
                     continue; // Vuelve al inicio del while sin sumar un lanzamiento
+
                 }
             }
+
             if(!jugadorPlantado) {
+
                 numeroLanzamiento++; // CONT++ PARA QUE NO SE PASE DE LOS 3 PERMITIDOS
+
             }
         }
 
 
-        /// LOGICA DEL PUNTAJE
-        int conteo[6];
+        // LOGICA DEL PUNTAJE
+
+        int conteo[6]; // vec de 6 para contar las 6 caras del dado
+
         contarDados(dados, conteo); // LLAMO LA FUNCION CONTAR DADOS, PARA CONTAR LOS DADOS RECIBIDOS
 
-        combinaciones(conteo, puntajeRonda, numeroLanzamiento - 1);
+        //NUMERO DE LANZAMIENTO -1 PQ SI NO CUENTA 4 LANZAMIENTOS
+        combinaciones(conteo, puntajeRonda, numeroLanzamiento - 1); // LLAMO LA FUNCION COMBINACIONES PARA QUE CON LOS DADOS CONTADOS VEA LA MEJOR COMBINACION POSIBLE
 
-        if(puntajeRonda == 60 && (numeroLanzamiento - 1) == 1){
+        if(puntajeRonda == 60 && (numeroLanzamiento - 1) == 1){ // IF PARA SABER SI ES GENERALA SERVIDA Y VER SI GANO
             generalaServida = true;
         }
 
+        // LO QUE VE EL USUARIO CUANDO TEMINA LA RONDA
         cout << "----------------------------------------------------------" <<endl;
         cout << "FIN DE LOS LANZAMIENTOS" << endl;
         cout << "PUNTAJE DE LA RONDA: " << puntajeRonda << " PTS." << endl;
-        puntajeTotal += puntajeRonda;
 
-
+        puntajeTotal += puntajeRonda; // ACUMULAMOS EN LA VARIABLE EL PUNTAJE DE LA RONDA
 
         limpiarPantalla();
 
-        if (generalaServida){
+        if (generalaServida){ // SI ES TRUE TERMINA EL JUEGO
             cout << "Juego finalizado." << endl;
             break;
         }
@@ -217,6 +249,7 @@ void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &
     cout << "FIN DEL JUEGO"<< endl;
     cout << "RONDAS JUGADAS: " << rondaJugada << " rondas" << endl;
     cout << "Puntaje final de "<< nombre << ": " << puntajeTotal << " PTS" << endl;
+
     cargarPuntaje(nombre, puntajeTotal, maxJugador, maxPuntaje); // CARGO EL PUNTAJE PARA VER SI ES EL MAS ALTO Y GAURDARLO JUNTO CON EL NOMBRE
 
     limpiarPantalla();
@@ -226,8 +259,10 @@ void jugarUnJugador(int &puntajeTotal, string &nombre, string &maxJugador, int &
 
 /// FUNCION PRINCIPAL DEL MODO DOS JUGADORES
 void jugarDosJugadores(string &maxJugador, int &maxPuntaje) {
-    int puntajeJ1 = 0, puntajeJ2 = 0; // INICIALIZO LAS VARIABLES DE PUNTAJE EN CERO Y DE NOMBRE
-    string nombreJ1, nombreJ2;
+
+    int puntajeJ1 = 0, puntajeJ2 = 0; // INICIALIZO LAS VARIABLES DE PUNTAJE EN CERO
+    string nombreJ1, nombreJ2; // Y DE NOMBRE
+
     // PIDO LOS DOS NOMBRES
     cout << "Ingrese nombre del Jugador 1: ";
     cin >> nombreJ1;
@@ -235,248 +270,155 @@ void jugarDosJugadores(string &maxJugador, int &maxPuntaje) {
     cin >> nombreJ2;
 
     // FUNCION COPIADA DEL MODO UN JUGADOR
-    bool mManual = false;  // siempre automático en modo 2 jugadores
 
     for (int ronda = 1; ronda <= 10; ronda++) {
+
+        // LLAMO A LA FUNCION JUGAR TURNO PARA JUGAR UN TURNO C/U
         cout << "Ronda " << ronda << " - Turno de " << nombreJ1 << endl;
-        jugarTurno(puntajeJ1, nombreJ1, mManual, maxJugador, maxPuntaje);
+        jugarTurno(puntajeJ1, nombreJ1, maxJugador, maxPuntaje);
 
         cout << "Ronda " << ronda << " - Turno de " << nombreJ2 << endl;
-        jugarTurno(puntajeJ2, nombreJ2, mManual, maxJugador, maxPuntaje);
+        jugarTurno(puntajeJ2, nombreJ2, maxJugador, maxPuntaje);
+
     }
+
     // COMPARACION PARA VER QUIEN GANO
     cout << "----------------------------------------------------------\n";
     cout << "RESULTADOS FINALES:\n";
     cout << nombreJ1 << ": " << puntajeJ1 << " PTS\n";
     cout << nombreJ2 << ": " << puntajeJ2 << " PTS\n";
 
-    if (puntajeJ1 > puntajeJ2)
+    if (puntajeJ1 > puntajeJ2) // SI ES TRUE GANA EL J1
         cout << "GANADOR: " << nombreJ1;
-    else if (puntajeJ2 > puntajeJ1)
+    else if (puntajeJ2 > puntajeJ1) // SI ES TRUE GANA EL J2
         cout << "GANADOR: " << nombreJ2;
     else {
         cout << "EMPATE!! SE DEFINE POR SUERTE";
 
-        bool empate = true;
+        bool empate = true; // EMPATE TRUE PARA QUE PASE EL WHILE Y SIGA CON EL DESEMPATE
 
+        // WHILE QUE SIGUE HASTA QUE EMPATE SEA FALSE
         while(empate) {
+
+            // GENERAMOS DOS DADOS ALEATORIOS HASTA QUE UNO SEA MAYOR QUE EL OTRO
             int dado1 = 1 + rand() % 6;
             int dado2 = 1 + rand() % 6;
 
+            // MOSTRAMOS DICHOS DADOS
             cout << nombreJ1 << " tira un " << dado1 << endl;
             cout << nombreJ2 << " tira un " << dado2 << endl;
 
-            if (dado1 > dado2) {
+            if (dado1 > dado2) { // SI ES TRUE GANA EL J1
                 cout << "¡GANA " << nombreJ1 << "! QUE SUERTE" << endl;
 
-                empate = false;
+                empate = false; // CERRAMOS WHILE
             }
-            else if (dado2 > dado1) {
+            else if (dado2 > dado1) { // SI ES TRUE GANA EL J2
                 cout << "¡GANA " << nombreJ2 << "! QUE SUERTE" << endl;
 
-                empate = false;
+                empate = false; // CERAMOOS WHILE
             }
             else {
-                cout << "¡EMPATE OTRA VEZ, TIRAN DE NUEVO!" << endl;
+                cout << "¡EMPATE OTRA VEZ, TIRAN DE NUEVO!" << endl; // SI EMPATAN DE NUEVO, SIGUE HASTA QUE HAYA UN GANADOR
             }
         }
     }
     cout << "----------------------------------------------------------\n";
-    limpiarPantalla();
+    limpiarPantalla(); // LIMPIAMOS PANTALLA
 }
 
 
 
-/// FUNCION DE MODO UN JUGADOR PARA DOS JUGADORES
-void jugarUnJugador2(int &puntajeTotal, string &nombre, string &maxJugador, int &maxPuntaje){
+/// FUNCION PARA JUGAR TURNO POR TURNO EN EL MODO DOS JUGADORES
+void jugarTurno(int &puntajeTotal, string nombre, string &maxJugador, int &maxPuntaje) { // MANDO POR REFERENCIA LO QUE ESTOY USANDO CONTINUAMENTE Y POR PARAMETRO LO QUE PROCESO
 
-    puntajeTotal = 0;
-
-    int cantDados = 5; // VARIABLE PARA CANT. DE DADOS
-    int dados[5]; // VEC CON EL TAMAÑO DE LOS DADOS QUE NECESITAMOS
-    bool mManual = false; // mManual es siempre false en modo 2 jugadores
-
-    bool generalaServida = false;
-
-    //FOR PARA LA CANT. DE RONDAS
-    for(int ronda = 1; ronda <=10; ronda++){
-
-        // INFO VISIBLE PARA EL USUARIO
-        cout << "----------------------------------------------------------" <<endl;
-        cout << "Turno de: " << nombre << " | Ronda : " << ronda << " | Puntaje total: " << puntajeTotal << " PTS." << endl;
-
-        int numeroLanzamiento = 1; // VARIABLE PARA GUARDAR QUE LANZAMIENTOS ES
-        bool jugadorPlantado = false;
-        char respuestaJugador, respuestaJugador2 = 'n';
-
-        int puntajeRonda = 0;
-
-        // MIENTRAS EL LANZAMIENTO SEA < 3 Y EL JUGADOR NO ESTE PLANTADO SIGUE
-        while(numeroLanzamiento <= 3 && !jugadorPlantado){
-        // SI ES 1 SE TIRAM DADOS Y SE MUESTRAM
-            if(numeroLanzamiento == 1){
-                tirarDados(dados, cantDados, mManual);
-                mostrarDados(dados, cantDados, 1);
-
-            } else {
-                cout << "CONTINUAR LANZANDO? (S/N)";
-                cin >> respuestaJugador; // PREGUNTO SI QUIERE SEGUIR TIRANDO ALGUN DADO
-
-                if (respuestaJugador == 'N' || respuestaJugador == 'n') {
-                    jugadorPlantado = true; // EL JUG SE PLANTA
-
-                } else if (respuestaJugador == 'S' || respuestaJugador == 's') {
-                    cout << "DESEA TIRAR TODOS? ";
-                    cin >> respuestaJugador2;
-
-                    if (respuestaJugador2 == 'S' || respuestaJugador2 == 's' ) {
-                        tirarDados(dados, cantDados, mManual);
-                        mostrarDados(dados, cantDados, numeroLanzamiento);
-
-                    } else if (respuestaJugador2 == 'N' || respuestaJugador2 == 'n') {
-                        int cantidadARelanzar;
-                        cout << "CUANTOS DADOS VOLVES A TIRAR?: ";
-                        cin >> cantidadARelanzar; // PIDO CUANTOS QUIERE TIRAR
-
-                        for (int i=0; i < cantidadARelanzar; i++){
-                            int posicionDado;
-                            cout << "CUAL DADO?: ";
-                            cin >> posicionDado; // PREGUNTO CUAL DE TODOS
-
-                            int indice = posicionDado - 1; // HAGO UN -1, PQ EL VEC VA DE 0 A 4
-
-                            if(indice < 0 || indice >= cantDados){
-                                cout << "Posicion invalida. Debe ser un dado entre 1 y 5." << endl;
-                                i--; // SE REPITE LA VUELTA
-                                continue;
-                            }
-
-                            dados[indice] = 1+ (rand()% 6); // SE GENERA UN DADO ALETORIO NUEVO
-                        }
-                        mostrarDados(dados, cantDados, numeroLanzamiento); // MUESTRO LOS NUEVOS DADOS
-                    }
-                } else {
-                    // SI LA RESPUESTA NO ES S NI N
-                    cout << "Respuesta invalida. Por favor, ingrese S o N." << endl;
-                    continue; // VUELVE AL INICIO SIN SUMAR LANZAMIENTO
-                }
-            }
-            if(!jugadorPlantado) {
-                numeroLanzamiento++; // CONT++ PARA QUE NO SE PASE DE LOS 3 PERMITIDOS
-            }
-        }
-
-        /// LOGICA DEL PUNTAJE
-        int conteo[6];
-        contarDados(dados, conteo); // LLAMO LA FUNCION CONTAR DADOS, PARA CONTAR LOS DADOS RECIBIDOS
-        combinaciones(conteo, puntajeRonda, numeroLanzamiento - 1);
-
-        if(puntajeRonda == 50 && (numeroLanzamiento - 1) == 1){
-            generalaServida = true;
-        }
-
-        cout << "----------------------------------------------------------" <<endl;
-        cout << "FIN DE LOS LANZAMIENTOS" << endl;
-        cout << "PUNTAJE DE LA RONDA: " << puntajeRonda << " PTS." << endl;
-        puntajeTotal += puntajeRonda; // GUARDO EL PUNTAJE TOTAL EN UNA VARIBLE, ASI LO DEVUELVO COMO REFERENCIA
-
-        limpiarPantalla();
-
-        if(generalaServida){
-            break;
-        }
-    }
-
-    /// FIN DEL JUEGO
-    cout << "----------------------------------------------------------" <<endl;
-    cout << "FIN DEL JUEGO"<< endl;
-    cout << "Puntaje final de "<< nombre << ": " << puntajeTotal << " PTS" << endl;
-    cargarPuntaje(nombre, puntajeTotal, maxJugador, maxPuntaje); // CARGO EL PUNTAJE PARA VER SI ES EL MAS ALTO Y GAURDARLO JUNTO CON EL NOMBRE
-
-    limpiarPantalla();
-}
+    const int cantDados = 5; // CONSTANTE PARA EL TAM DEL VEC
+    int dados[cantDados]; // VEC CON EL TAM DE CANTDADOS
+    int numeroLanzamiento = 1; // INICIALIZAMOS EN 1 PARA QUE SE MUESTRE QUE ES LA 1RA VEZ Q SE LANZA
+    bool jugadorPlantado = false; // FALSE HASTA QUE SE PLANTE
+    char respuestaJugador, respuestaJugador2; // TIPO CHAR PARA RESPONDER CON S/N
+    int puntajeRonda = 0; // PUNTAJE EN CERO PARA IR SUMANDO
 
 
-void jugarTurno(int &puntajeTotal, string nombre, bool mManual, string &maxJugador, int &maxPuntaje) {
-
-    const int cantDados = 5;
-    int dados[cantDados];
-    int numeroLanzamiento = 1;
-    bool jugadorPlantado = false;
-    char respuestaJugador, respuestaJugador2;
-    int puntajeRonda = 0;
-
+    // LO QUE VE EL USUARIO
     cout << "----------------------------------------------------------" << endl;
     cout << "Turno de: " << nombre << " | Puntaje total: " << puntajeTotal << " PTS." << endl;
 
+
+    // WHILE QUE SIGUE HASTA QUE IGUAL NUM.LAN 3 O SE PLANTE
     while (numeroLanzamiento <= 3 && !jugadorPlantado) {
-        if (numeroLanzamiento == 1) {
-            tirarDados(dados, cantDados, mManual);
+
+        if (numeroLanzamiento == 1) { // SI ES TRUE
+
+            // TIRAMOS Y MOSTRAMOS DADOS
+            tirarDados(dados, cantDados, false); //mandamos false para mManual que no se usa aca
             mostrarDados(dados, cantDados, numeroLanzamiento);
+
         } else {
+
             cout << "CONTINUAR LANZANDO? (S/N): ";
-            cin >> respuestaJugador;
+            cin >> respuestaJugador; // PREGUNTAMOS SI QUIERE SIGUIR LANZANDO
 
-            if (respuestaJugador == 'N' || respuestaJugador == 'n') {
-                jugadorPlantado = true;
-            } else if (respuestaJugador == 'S' || respuestaJugador == 's') {
+            if (respuestaJugador == 'N' || respuestaJugador == 'n') { //SI ES TRUE
+
+                jugadorPlantado = true; // TERMINAMOS LA RONDA
+
+            } else if (respuestaJugador == 'S' || respuestaJugador == 's') { // SI ES TRUE
+
                 cout << "DESEA TIRAR TODOS? (S/N): ";
-                cin >> respuestaJugador2;
+                cin >> respuestaJugador2; // PREGUNTAMOS SI QUIERE TIRAR TODOS
 
-                if (respuestaJugador2 == 'S' || respuestaJugador2 == 's') {
-                    tirarDados(dados, cantDados, mManual);
+                if (respuestaJugador2 == 'S' || respuestaJugador2 == 's') { // SI ES TRUE
+
+                    //VOLVEMOS A TIRAR Y MOSTRAR DADOS
+                    tirarDados(dados, cantDados, false); //mandamos false para mManual que no se usa aca
                     mostrarDados(dados, cantDados, numeroLanzamiento);
-                } else {
+
+                } else { // SI ES FALSE
+
                     int cantidadARelanzar;
                     cout << "CUANTOS DADOS VOLVES A TIRAR?: ";
-                    cin >> cantidadARelanzar;
+                    cin >> cantidadARelanzar; // PREGUNTAMOS CUANTOS QUIERE TIRAR
 
-                    for (int i = 0; i < cantidadARelanzar; i++) {
+                    for (int i = 0; i < cantidadARelanzar; i++) { // FOR PARA QUE SE SIGA HASTA QUE SEPA TODAS LAS POSICIONES
                         int posicionDado;
                         cout << "CUAL DADO?: ";
-                        cin >> posicionDado;
+                        cin >> posicionDado; // PREGUNTAMOS LA POSICION
 
-                        int indice = posicionDado - 1;
-                        if (indice < 0 || indice >= cantDados) {
+                        int indice = posicionDado - 1; // GUARDAMOS TAL POSICION -1 (PQ LOS VECS VAN DE 0 A N)
+                        if (indice < 0 || indice >= cantDados) { // IF PARA COMPROBAR QUE NO SE PASE DE 0 A 5
                             cout << "Posicion invalida." << endl;
                             i--;
-                            continue;
+                            continue; // CONTINUAR HASTA QUE INGRESE UN POSICION VALIDA
                         }
 
-                        if (mManual) {
-                            int valor;
-                            do {
-                                cout << "Seleccionar Valor para dado " << posicionDado << ": ";
-                                cin >> valor;
-                            } while (valor < 1 || valor > 6);
-                            dados[indice] = valor;
-                        } else {
-                            dados[indice] = 1 + (rand() % 6);
-                        }
+                        dados[indice] = 1 + (rand() % 6);
+
                     }
 
                     mostrarDados(dados, cantDados, numeroLanzamiento);
                 }
             } else {
                 cout << "Respuesta invalida. Por favor, ingrese S o N." << endl;
-                continue;
+                continue; // CONTINUAR HASTA QUE INGRESE UN OPCION VALIDA EN LA PARTE DE CONTINUAR LANZANDO
             }
         }
 
-        if (!jugadorPlantado) numeroLanzamiento++;
+        if (!jugadorPlantado) numeroLanzamiento++; // SI ES TRUE ++, HASTA QUE LLEGUE A 3 O SE PLANTE EL JUGADOR
     }
 
-    int conteo[6];
-    contarDados(dados, conteo);
-    combinaciones(conteo, puntajeRonda, numeroLanzamiento - 1);
+    int conteo[6]; // CONTADOR TAM 6 POR LAS 6 CARAS DEL DADO A CONTAR
+    contarDados(dados, conteo); // LLAMAMOS LA FUNCION PARA CONTAR
+    combinaciones(conteo, puntajeRonda, numeroLanzamiento - 1); // CON LOS DADOS CONTADOS LLAMAMOS LA FUNCION COMBINACIONES Y Q VEA LA MEJOR
 
+    // LO QUE VE EL USUARIO
     cout << "----------------------------------------------------------" << endl;
     cout << "FIN DEL TURNO" << endl;
     cout << "PUNTAJE DEL TURNO: " << puntajeRonda << " PTS." << endl;
 
-    puntajeTotal += puntajeRonda;
+    puntajeTotal += puntajeRonda; // ACUM EL PUNTAJE DE LA RONDA EN EL TOTAL
 
-    cargarPuntaje(nombre, puntajeTotal, maxJugador, maxPuntaje);
+    cargarPuntaje(nombre, puntajeTotal, maxJugador, maxPuntaje); // LO CARGAMOS, PARA EVALUAR EL MAX Y DPS EN EL MENU MOSTRARLO
     limpiarPantalla();
 }
 
@@ -525,6 +467,7 @@ void contarDados(int dados[], int conteo[]){ // mandamos como parametros dados y
         int valorDado = dados[i]; // guardo los valores del vec dados en valor dado
                                   //para recorrer num por num
         conteo[valorDado -1]++;   //y contar cuantos se repiten
+        //-1 (para valores 0 al 5 y ++ para las veces que aparece el num
     }
 }
 
@@ -577,8 +520,8 @@ void combinaciones(int conteo[], int &puntajeRonda, int numLanzamiento){
 
 
 /// FUNCION PARA SABER EL PUNTAJE MAS ALTO DE TODAS LAS PARTIDAS JUGADAS
-void cargarPuntaje(string nombre, int puntajeTotal, string &maxJugador, int &maxPuntaje){
-    if (puntajeTotal > maxPuntaje){
+void cargarPuntaje(string nombre, int puntajeTotal, string &maxJugador, int &maxPuntaje){ // mandamos por referencia las variables para modificarlas originales
+    if (puntajeTotal > maxPuntaje){ // if para saber si supera al maxpuntaje, asi actualizamos los datos
         maxJugador = nombre;
         maxPuntaje = puntajeTotal;
     }
@@ -587,16 +530,17 @@ void cargarPuntaje(string nombre, int puntajeTotal, string &maxJugador, int &max
 
 
 /// FUNCION QUE MUESTRA LOS PUNTAJES
-void mostrarPuntaje(string maxJugador, int maxPuntaje) {
+void mostrarPuntaje(string maxJugador, int maxPuntaje) { // mandamos por valor las variables para modificar solamente el jugador y el puntaje maximo
     cout << "************************* Puntaje ************************" << endl;
     cout << "----------------------------------------------------------" <<endl;
     cout << "----------------------------------------------------------" <<endl;
-    if (maxJugador == "") {
+    if (maxJugador == "") { // si true cout avisando q no hay puntajes actualmente
         cout << "No hay puntajes actualmente." << endl << endl;
         limpiarPantalla();
-        return;
+        return; // return para volver al menu principal
     }
+    // mostramos al jugador y su puntaje
     cout << endl << "Mejor jugador: " << maxJugador<< " con " << maxPuntaje << " Puntos." << endl << endl;
     cout << endl;
-    limpiarPantalla();
+    limpiarPantalla(); //limpiamos pantalla
 }
